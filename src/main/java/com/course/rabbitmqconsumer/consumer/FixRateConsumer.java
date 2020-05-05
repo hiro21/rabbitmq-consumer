@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-@Service
+//@Service
 public class FixRateConsumer {
     private final Logger log = LoggerFactory.getLogger(FixRateConsumer.class);
 
