@@ -9,16 +9,20 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 
-//@Service
-public class PictureVectorConsumer {
+@Service
+public class MyPictureImageConsumer {
     private ObjectMapper objectMapper = new ObjectMapper();
 
-    private static final Logger log = LoggerFactory.getLogger(PictureVectorConsumer.class);
+    private static final Logger log = LoggerFactory.getLogger(MyPictureImageConsumer.class);
 
-    @RabbitListener(queues = "q.picture.vector")
+    @RabbitListener(queues = "q.mypicture.image")
     public void listen(String message) throws IOException {
         var p = objectMapper.readValue(message, Picture.class);
-        log.info("On vector:{}", p.toString());
+
+        if (p.getSize() > 9000) {
+            throw new IllegalArgumentException("picture size too large:" + p.getSize());
+        }
+        log.info("On image:{}", p.toString());
 
     }
 }

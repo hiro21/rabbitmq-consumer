@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 
-@Service
+//@Service
 public class PictureFilterConsumer {
     private ObjectMapper objectMapper = new ObjectMapper();
 
